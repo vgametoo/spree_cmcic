@@ -12,11 +12,15 @@ module SpreeCmcic
       Dir.glob(File.join(File.dirname(__FILE__), "../../app/overrides/*.rb")) do |c|
         Rails.application.config.cache_classes ? require(c) : load(c)
       end
-      
-      initializer "spree.gateway.payment_methods", :after => "spree.register.payment_methods" do |app|
-        app.config.spree.payment_methods << Spree::BillingIntegration::Cmcic
-      end
-      
     end
+      
+    initializer "spree_cmcic.register.payment_methods" do |app|
+      app.config.spree.payment_methods += [
+        Spree::BillingIntegration::Cmcic,
+        Spree::BillingIntegration::TestCmcic
+      ]
+    end
+    
+    config.to_prepare &method(:activate).to_proc
   end
 end
