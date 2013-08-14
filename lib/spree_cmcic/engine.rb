@@ -13,12 +13,10 @@ module SpreeCmcic
         Rails.application.config.cache_classes ? require(c) : load(c)
       end
       
-      config.after_initialize do |app|
-        app.config.spree.payment_methods += [ Spree::BillingIntegration::Cmcic ]
+      initializer "spree.gateway.payment_methods", :after => "spree.register.payment_methods" do |app|
+        app.config.spree.payment_methods << Spree::BillingIntegration::Cmcic
       end
       
     end
-
-    config.to_prepare &method(:activate).to_proc
   end
 end
