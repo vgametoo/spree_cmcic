@@ -1,1 +1,6 @@
-Paiement direct par carte banquaire
+<% oTpe = CMCIC_Tpe.new %>
+<%= form_tag(oTpe.sUrlPaiement, :method => :post, :target => "_top") do |f| %>
+    <%= hidden_field_tag "version", oTpe.sVersion %>
+    <%= hidden_field_tag "TPE", oTpe.sNumero %>
+    <%= submit_tag "Paiment CB", :class => "btn-blue align-center" %>
+<% end %>

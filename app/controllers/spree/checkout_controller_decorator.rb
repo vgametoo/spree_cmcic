@@ -8,8 +8,10 @@ module Spree
 
       payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
       return unless payment_method.kind_of?(Spree::BillingIntegration::Cmcic)
+      
+      flash[:error] = "Complete CB Paiement first !"
 
-      redirect_to "https://paiement.creditmutuel.fr/" and return
+      return
     end
 
   end
