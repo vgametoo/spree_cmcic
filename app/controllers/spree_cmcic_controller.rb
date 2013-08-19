@@ -1,4 +1,4 @@
-class SpreeCmcicController < Spree::BaseController
+class SpreeCmcicController < ApplicationController
 
   def show
     @order = Spree::Order.find(params[:order_id])

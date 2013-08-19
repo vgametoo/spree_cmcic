@@ -19,4 +19,7 @@ opts[:payment_method_id] = payment_method.id
   <legend><%= t(:payment_information) %></legend>
   <iframe id="cmcic_frame_<%= payment_method.id %>"
           class="cmcic_frame" src="/spree_cmcic/<%= payment_method.id %>/<%= @order.id %>"></iframe>
+  <iframe id="2_cmcic_frame_<%= payment_method.id %>"
+          class="cmcic_frame" src="<%= spree_cmcic_path(payment_method.id, @order.id) %>"></iframe>
+          
 </fieldset>
