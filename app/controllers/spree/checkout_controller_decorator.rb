@@ -7,7 +7,7 @@ module Spree
       return unless params[:order][:payments_attributes]
 
       payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
-      return unless payment_method.kind_of?(Spree::BillingIntegration::Cmcic)
+      return unless payment_method.kind_of?(Spree::Gateway::Cmcic)
       
       @order.update_attributes(object_params)
       redirect_to(gateway_cmcic_path(:gateway_id => payment_method.id, :order_id => @order.id))
