@@ -1,7 +1,7 @@
 class SpreeCmcicController < Spree::BaseController
 
   def show
-    @order = Order.find(params[:order_id])
+    @order = Spree::Order.find(params[:order_id])
     @gateway = @order.available_payment_methods.find{|x| x.id == params[:gateway_id].to_i }
 
     if @order.blank? || @gateway.blank?
