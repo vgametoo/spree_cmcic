@@ -9,9 +9,9 @@ module Spree
       payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
       return unless payment_method.kind_of?(Spree::BillingIntegration::Cmcic)
       
-      flash[:error] = "Complete CB Paiement first !"
-
-      return
+      @order.update_attributes(object_params)
+      @order.payment.update_attribute(:state, 'processing')
+      redirect_to(gateway_cmcic_path(:gateway_id => payment_method.id, :order_id => @order.id))
     end
 
   end
