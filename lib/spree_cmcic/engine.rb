@@ -15,7 +15,7 @@ module SpreeCmcic
     end
       
     initializer "spree_cmcic.register.payment_methods" do |app|
-      app.config.spree.payment_methods += [ Spree::Gateway::Cmcic ]
+      app.config.spree.payment_methods += [ Spree::BillingIntegration::Cmcic ]
     end
     
     config.to_prepare &method(:activate).to_proc
