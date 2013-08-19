@@ -7,7 +7,7 @@ module Spree
       return unless params[:order][:payments_attributes]
 
       payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
-      return unless payment_method.kind_of?(Spree::Gateway::Cmcic)
+      return unless payment_method.kind_of?(Spree::BillingIntegration::Cmcic)
       
       redirect_to edit_order_checkout_url(@order, :state => 'payment'),
                     :error => 'Complete CB Paiement !'
