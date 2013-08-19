@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  namespace :gateway do
-    match '/cmcic/:gateway_id/:order_id' => 'cmcic#show', :as => :cmcic
-  
-  end
+
+    match '/spree_cmcic/:gateway_id/:order_id' => 'spree_cmcic#show', :as => :spree_cmcic
 end
