@@ -9,8 +9,9 @@ module Spree
       payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
       return unless payment_method.kind_of?(Spree::Gateway::Cmcic)
       
-      @order.update_attributes(object_params)
-      redirect_to(gateway_cmcic_path(:gateway_id => payment_method.id, :order_id => @order.id))
+      redirect_to edit_order_checkout_url(@order, :state => 'payment'),
+                    :notice => 'Complete CB Paiement !'
+
     end
 
   end
