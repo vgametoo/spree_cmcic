@@ -10,7 +10,6 @@ module Spree
       return unless payment_method.kind_of?(Spree::BillingIntegration::Cmcic)
       
       @order.update_attributes(object_params)
-      @order.payment.update_attribute(:state, 'processing')
       redirect_to(gateway_cmcic_path(:gateway_id => payment_method.id, :order_id => @order.id))
     end
 
