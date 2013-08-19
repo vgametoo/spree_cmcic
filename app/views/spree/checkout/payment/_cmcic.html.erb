@@ -18,6 +18,6 @@ opts[:payment_method_id] = payment_method.id
 <fieldset id="cmcic_payment__<%= payment_method.id %>" data-hook>
   <legend><%= t(:payment_information) %></legend>
   <iframe id="cmcic_frame_<%= payment_method.id %>"
-          class="cmcic_frame" src="/spree_cmcic/<%= payment_method.id %>/<%= @order.id %>"></iframe>
+          class="cmcic_frame" src="/store/spree_cmcic/<%= payment_method.id %>/<%= @order.id %>"></iframe>
           
 </fieldset>
