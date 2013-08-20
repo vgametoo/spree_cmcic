@@ -10,7 +10,7 @@ module Spree
       return unless payment_method.kind_of?(Spree::BillingIntegration::Cmcic)
       
       redirect_to edit_order_checkout_url(@order, :state => 'payment'),
-                    :error => 'Complete CB Paiement !'
+                    :notice => 'Complete CB Paiement !'
 
     end
 
