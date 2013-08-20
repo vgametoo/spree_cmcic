@@ -9,6 +9,8 @@ class SpreeCmcicController < ApplicationController
       flash[:error] = I18n.t('invalid_arguments')
       redirect_to :back
     else
+      
+      @order.update_attribute(:payment_date, @order.updated_at)
 
     end
     
