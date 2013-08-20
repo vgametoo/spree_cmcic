@@ -1,8 +1,9 @@
-Spree::Order.class_eval do
+module Spree
+  Order.class_eval do
 
   # Confirmation step not compatible with CM-CIC paiement
   def confirmation_required?
-    return false
+    return "toto"
   end
   
   def cmcic_sDevise
@@ -74,5 +75,5 @@ Spree::Order.class_eval do
     
     OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new("sha1"), oTpe.getPackCle, sChaineMAC).upcase
   end  
-
+end
 end
