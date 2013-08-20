@@ -1,7 +1,5 @@
 Spree::Order.class_eval do
     
-  attr_accessible :cmcic_sDate
-
   # Confirmation step not compatible with CM-CIC paiement
   def confirmation_required?
     return false
@@ -12,7 +10,7 @@ Spree::Order.class_eval do
   end
   
   def cmcic_sDate
-    self.created_at.strftime("%d/%m/%Y:%H:%M:%S")
+    self.payment_date.strftime("%d/%m/%Y:%H:%M:%S")
   end
 
   def cmcic_sMontant
