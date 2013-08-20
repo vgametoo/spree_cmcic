@@ -1,5 +1,7 @@
 module Spree
   Order.class_eval do
+    
+  attr_accessible :cmcic_sDate
 
   # Confirmation step not compatible with CM-CIC paiement
   def confirmation_required?
