@@ -1,4 +1,5 @@
 class SpreeCmcicController < ApplicationController
+  respond_to :html
 
   def show
     @order = Spree::Order.find(params[:order_id])
@@ -9,6 +10,10 @@ class SpreeCmcicController < ApplicationController
       redirect_to :back
     else
 
+    end
+    
+    respond_to do |format|
+      format.html { render 'show', :layout => false }
     end
   end
 

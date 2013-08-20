@@ -3,5 +3,16 @@ Show Spree_cmcic 1
 <%= form_tag(oTpe.sUrlPaiement, :method => :post, :target => "_blank") do |f| %>
     <%= hidden_field_tag "version", oTpe.sVersion %>
     <%= hidden_field_tag "TPE", oTpe.sNumero %>
+    <%= hidden_field_tag "date", @order.cmcic_sDate %>
+    <%= hidden_field_tag "montant", @order.cmcic_sMontant %>
+    <%= hidden_field_tag "reference", @order.cmcic_sReference %>
+    <%= hidden_field_tag "MAC", @order.cmcic_sMAC_Tpe(oTpe) %>
+    <%= hidden_field_tag "url_retour", "http://localhost:3000/store/checkout/payment" %>
+    <%= hidden_field_tag "url_retour_ok", "http://localhost:3000/store/checkout/payment" %>
+    <%= hidden_field_tag "url_retour_err", "http://localhost:3000/store/checkout/payment" %>
+    <%= hidden_field_tag "lgue", oTpe.sLangue %>
+    <%= hidden_field_tag "societe", oTpe.sCodeSociete %>
+    <%= hidden_field_tag "texte-libre", @order.cmcic_sTexteLibre %>
+    <%= hidden_field_tag "mail", @order.cmcic_email %>
     <%= submit_tag "Paiment CB", :class => "btn-blue align-center" %>
 <% end %>
